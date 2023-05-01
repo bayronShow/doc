@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="bayron Show" />
+
+<meta name="date" content="2023-05-01" />
+
+<title>10 Lab</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">10 Lab</h1>
+<h4 class="author">bayron Show</h4>
+<h4 class="date">2023-05-01</h4>
+
+
+
+<div id="как-в-течение-года-меняется-распределение-времени-полета-в-течение-дня" class="section level2">
+<h2>Как в течение года меняется распределение времени полета в течение
+дня?</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> dep_time<span class="sc">/</span><span class="dv">100</span>, <span class="at">fill =</span> <span class="fu">factor</span>(month))) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.25</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Время вылета&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Количество рейсов&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Месяц&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">24</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 8255 rows containing non-finite values (`stat_bin()`).</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 24 rows containing missing values (`geom_bar()`).</span></span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>На основании гистограммы распределения времени вылета рейсов в
+зависимости от месяца, можно сделать вывод, что распределение времени
+полета в течение дня меняется в течение года. Например, летом чаще
+происходят вылеты вечером и ночью, а зимой - днем. Весной и осенью можно
+наблюдать более равномерное распределение вылетов в течение дня. Также
+можно заметить, что среди всех месяцев, июль и август являются самыми
+популярными для вылетов в течение дня. В целом, изменение распределения
+времени полета в течение дня в течение года может быть связано с
+сезонными изменениями в туристическом спросе, изменением климатических
+условий и другими факторами.</p>
+</div>
+<div id="сравните-dep_timesched_dep_time-и-dep_delay.последовательны-ли-они-объясните-свои-выводы." class="section level2">
+<h2>Сравните <code>dep_time</code>,<code>sched_dep_time</code> и
+<code>dep_delay</code>.Последовательны ли они? Объясните свои
+выводы.</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dep_time, sched_dep_time, dep_delay) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 × 3</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   dep_time sched_dep_time dep_delay</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      517            515         2</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      533            529         4</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      542            540         2</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      544            545        -1</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      554            600        -6</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      554            558        -4</span></span></code></pre></div>
+<p><code>dep_time</code> - время вылета рейса,
+<code>sched_dep_time</code> - запланированное время вылета рейса,
+<code>dep_delay</code> - разница между временем вылета и запланированным
+временем вылета.Из результатов видно, что значения <code>dep_time</code>
+и <code>sched_dep_time</code> не всегда совпадают. Это свидетельствует о
+том, что рейсы могут отправляться не в точности в то время, которое было
+запланировано.</p>
+<p>Значение <code>dep_delay</code> показывает разницу между временем
+вылета и запланированным временем вылета. Если значение положительное,
+то рейс вылетел позже запланированного времени, если отрицательное -
+раньше.</p>
+<p>Таким образом, можно сделать вывод, что значения
+<code>dep_time</code>, <code>sched_dep_time</code> и
+<code>dep_delay</code> не являются
+последовательными.<code>Dep_delay</code> зависит от разницы между
+<code>dep_time</code> и <code>sched_dep_time</code>, которая может
+меняться в зависимости от фактического времени вылета рейса.</p>
+</div>
+<div id="сравните-air_time-с-продолжительностью-между-вылетом-и-прибытием.-объясните-свои-выводы.-подсказка-учитывайте-расположение-аэропорта." class="section level2">
+<h2>Сравните <code>air_time</code> с продолжительностью между вылетом и
+прибытием. Объясните свои выводы. (Подсказка: учитывайте расположение
+аэропорта.)</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">flight_time =</span> arr_time <span class="sc">-</span> dep_time) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(air_time, flight_time) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   air_time flight_time</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      &lt;dbl&gt;       &lt;int&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      227         313</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      227         317</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      160         381</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      183         460</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      116         258</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      150         186</span></span></code></pre></div>
+<p><code>air_time</code> - время в полете, <code>flight_time</code> -
+продолжительность между вылетом и прибытием.Из результатов можно сделать
+вывод, что <code>air_time</code> и продолжительность между вылетом и
+прибытием не всегда совпадают. Продолжительность между вылетом и
+прибытием может включать в себя время на руление, ожидание взлета или
+посадки, а также время на транспортировку по рулежной дорожке после
+посадки.</p>
+<p>В то же время <code>air_time</code> показывает только время
+нахождения в воздухе, когда самолет находится на высоте и летит со
+скоростью крейсерского полета.</p>
+<p>Кроме того, расположение аэропорта также может оказывать влияние на
+разницу между <code>air_time</code> и <code>flight_time</code>.
+Например, если аэропорт назначения находится ближе к точке отправления,
+то время на руление и ожидание может быть меньше, что приведет к более
+короткому <code>flight_time</code> и меньшей разнице с
+<code>air_time</code>.</p>
+<p>Таким образом, можно сделать вывод, что air_time и продолжительность
+между вылетом и прибытием не всегда совпадают, и разница между ними
+может зависеть от различных факторов, таких как расстояние между
+аэропортами,такими как погодные условия, наличие штормов и
+турбулентности/</p>
+</div>
+<div id="как-меняется-среднее-время-задержки-в-течение-дня-что-следует-использовать-dep_time-или-sched_dep_time-почему" class="section level2">
+<h2>Как меняется среднее время задержки в течение дня? Что следует
+использовать: <code>dep_time</code> или <code>sched_dep_time</code>?
+Почему?</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sched_dep_time =</span> <span class="fu">as.POSIXct</span>(<span class="fu">paste</span>(year, month, day, sched_dep_time), <span class="at">format =</span> <span class="st">&quot;%Y %m %d %H%M&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/New_York&quot;</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">dep_time =</span> <span class="fu">as.POSIXct</span>(<span class="fu">paste</span>(year, month, day, dep_time), <span class="at">format =</span> <span class="st">&quot;%Y %m %d %H%M&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/New_York&quot;</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(dep_time)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>flights_delay <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">delay =</span> dep_time <span class="sc">-</span> sched_dep_time)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>delay_by_hour <span class="ot">&lt;-</span> flights_delay <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">hour =</span> <span class="fu">hour</span>(dep_time)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> delay_by_hour, <span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> mean_delay)) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Средняя задержка вылета по каждому часу дня&quot;</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Час дня&quot;</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Средняя задержка (минуты)&quot;</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Don&#39;t know how to automatically pick scale for object of type &lt;difftime&gt;.</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Defaulting to continuous.</span></span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Полученный график покажет, как меняется среднее время задержки в
+течение дня.Так же из графика можно сделать вывод,что среднее время
+задержки меняеется.В основном наблюдается увеличение задержки в первой
+половине дня и ее уменьшение после полудня.Какое время использовать для
+анализа задержек - dep_time или sched_dep_time?в этом случае лучше
+использовать sched_dep_time, то есть запланированное время вылета. Это
+связано с тем, что задержки могут быть вызваны различными факторами,
+такими как погодные условия, отсутствие персонала, наличие технических
+проблем и другие факторы, которые могут возникнуть после
+запланированного времени вылета. Таким образом, использование
+sched_dep_time позволяет оценить, какие временные периоды имеют большую
+вероятность задержек, и определить возможные причины этих задержек.</p>
+</div>
+<div id="в-какой-день-недели-лучше-уехать-если-вы-хотите-свести-к-минимуму-вероятность-задержки" class="section level2">
+<h2>В какой день недели лучше уехать, если вы хотите свести к минимуму
+вероятность задержки?</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weekday =</span> <span class="fu">wday</span>(time_hour, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(weekday) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(avg_delay)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 7 × 2</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   weekday avg_delay</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;ord&gt;       &lt;dbl&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Сб           10.5</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Вт           14.9</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Вс           15.1</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Ср           16.5</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Пт           19.8</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Пн           20.3</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 Чт           22.3</span></span></code></pre></div>
+<p>weekday - это день недели, а avg_delay - это средняя задержка вылета
+рейса в минутах для каждого дня недели.Этот график поокажет,что среднее
+время задержки по дням недели, отсортированное по возрастанию. Например,
+если мы увидим, что наименьшее среднее время задержки приходится на
+понедельник, то можно заключить, что понедельник - лучший день недели
+для выезда, если хотите свести к минимуму вероятность задержки.</p>
+<p>Таким образом, можно использовать этот подход, чтобы определить, в
+какой день недели имеет наименьшую вероятность задержки, и выбрать этот
+день для выезда, если это возможно. Однако стоит учитывать, что
+вероятность задержки может быть вызвана различными факторами, такими как
+погодные условия, отсутствие персонала и другие факторы, которые могут
+изменяться от дня к дню. Поэтому, помимо дня недели, стоит учитывать и
+другие факторы, такие как погодные условия, при выборе времени
+вылета.</p>
+</div>
+<div id="подтвердите-гипотезу-о-том-что-ранние-вылеты-рейсов-через-20-30-и-50-60-минут-вызваны-ранним-вылетом-регулярных-рейсов.-подсказка-создайте-двоичную-переменную-которая-сообщает-вам-был-ли-задержан-рейс." class="section level2">
+<h2>Подтвердите гипотезу о том, что ранние вылеты рейсов через 20-30 и
+50-60 минут вызваны ранним вылетом регулярных рейсов. Подсказка:
+создайте двоичную переменную, которая сообщает вам, был ли задержан
+рейс.</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(flights)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">delayed =</span> <span class="fu">ifelse</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">regular =</span> <span class="fu">ifelse</span>(carrier <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;DL&quot;</span>, <span class="st">&quot;UA&quot;</span>, <span class="st">&quot;WN&quot;</span>), <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>regular_delayed_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(regular <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> delayed <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(regular_delayed_flights, <span class="fu">aes</span>(<span class="at">x =</span> dep_delay)) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Задержка вылета самолета в минутах&quot;</span>,<span class="at">y =</span> <span class="st">&quot;количество наблюдений рейсов&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(regular_delayed_flights, <span class="fu">aes</span>(<span class="at">x =</span> dep_delay)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">30</span>, <span class="sc">-</span><span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">60</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Задержка вылета самолета в минутах&quot;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;количество наблюдений рейсов&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p><strong><em>Красные линии на графике обозначают интервалы времени
+вылета рейсов через 20-30 и 50-60 минут соответственно</em></strong></p>
+<p>Если мы увидим, что задержки в интервалах 20-30 и 50-60 минут
+встречаются с большей частотой, чем другие задержки, то это может
+свидетельствовать о том, что ранние вылеты регулярных рейсов влияют на
+вылеты других рейсов.В итоге, после анализа графика, если мы увидим, что
+задержки в интервалах 20-30 и 50-60 минут встречаются с большей
+частотой, чем другие задержки, то это может свидетельствовать о том, что
+ранние вылеты регулярных рейсов влияют на вылеты других рейсов.</p>
+<p>Если среднее время задержки для рейсов, вылетающих через 20-30 и
+50-60 минут после предыдущего рейса, значительно отличается от среднего
+времени задержки для рейсов, вылетающих не через эти интервалы, то мы
+можем сделать вывод, что ранние вылеты этих рейсов вызваны ранним
+вылетом регулярных рейсов.Так же необходимо учитывать, что на время
+задержки могут влиять другие факторы, такие как погода, кол-ва
+пассажиров и т.д, которые не отражены в данных. Поэтому, для более
+точного анализа необходимо учитывать дополнительные факторы.</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
